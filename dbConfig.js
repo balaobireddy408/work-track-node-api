@@ -1,4 +1,4 @@
 module.exports = {
-  DB:"mongodb+srv://balaobireddy408:B@lu408ece@cluster0.nkyma.mongodb.net/WorkTrack?retryWrites=true&w=majority"
+  DB: 'mongodb+srv://balaobireddy408:EYfeb2023@cluster0.sbnb2af.mongodb.net/WhatNextDB?retryWrites=true&w=majority',
 };
 
