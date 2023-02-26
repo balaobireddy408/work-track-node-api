@@ -3,9 +3,11 @@ const app = express();
 const userRoutes = express.Router();
 
 // Require Business model in our routes module
+
 let User = require('../models/Users');
 
 // Defined store route
+
 userRoutes.route('/add').post(function (req, res) {
   let user = new User(req.body);
   user
@@ -19,6 +21,16 @@ userRoutes.route('/add').post(function (req, res) {
 });
 
 // Defined get data(index or listing) route
+/** 
+ * @swagger 
+ * /api/user: 
+ *   get: 
+ *     description: Get all users 
+ *     responses:  
+ *       200: 
+ *         description: Success  
+ *   
+ */
 userRoutes.route('/').get(function (req, res) {
   User.find(function (err, user) {
     if (err) {
@@ -30,6 +42,16 @@ userRoutes.route('/').get(function (req, res) {
 });
 
 // Defined edit route
+/** 
+ * @swagger 
+ * /api/user/edit/:id: 
+ *   get: 
+ *     description: edit user based on id 
+ *     responses:  
+ *       200: 
+ *         description: Success  
+ *   
+ */
 userRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
   User.findById(id, function (err, user) {
@@ -71,6 +93,19 @@ userRoutes.route('/delete/:id').get(function (req, res) {
 });
 
 // authentication
+/** 
+ * @swagger 
+ * /api/user/auth: 
+ *   post: 
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *     responses:  
+ *       200: 
+ *         description: Success  
+ *   
+ */
 userRoutes.route('/auth').post(function (req, res) {
   let user = new User(req.body);
   User.findOne({ user_name: user.user_name, password: user.password }).then(
