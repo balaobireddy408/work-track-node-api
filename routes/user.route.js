@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 const userRoutes = express.Router();
 
@@ -63,11 +63,25 @@ userRoutes.route('/update/:id').post(function (req, res, next) {
 });
 
 // Defined delete | remove | destroy route
-userRoutes.route("/delete/:id").get(function(req, res) {
-  User.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
+userRoutes.route('/delete/:id').get(function (req, res) {
+  User.findByIdAndRemove({ _id: req.params.id }, function (err, user) {
     if (err) res.json(err);
-    else res.json("Successfully removed");
+    else res.json('Successfully removed');
   });
+});
+
+// authentication
+userRoutes.route('/auth').post(function (req, res) {
+  let user = new User(req.body);
+  User.findOne({ user_name: user.user_name, password: user.password }).then(
+    function (doc) {
+      if (!doc) {
+        res.json('no record found');
+      } else {
+        res.json('authenticated');
+      }
+    }
+  );
 });
 
 module.exports = userRoutes;
