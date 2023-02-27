@@ -13,7 +13,7 @@ userRoutes.route('/add').post(function (req, res) {
   user
     .save()
     .then((user) => {
-      res.status(200).json({ user: 'added successfully' });
+      res.status(200).json({ message: 'added successfully' });
     })
     .catch((err) => {
       res.status(400).send(err);
@@ -21,15 +21,15 @@ userRoutes.route('/add').post(function (req, res) {
 });
 
 // Defined get data(index or listing) route
-/** 
- * @swagger 
- * /api/user: 
- *   get: 
- *     description: Get all users 
- *     responses:  
- *       200: 
- *         description: Success  
- *   
+/**
+ * @swagger
+ * /api/user:
+ *   get:
+ *     description: Get all users
+ *     responses:
+ *       200:
+ *         description: Success
+ *
  */
 userRoutes.route('/').get(function (req, res) {
   User.find(function (err, user) {
@@ -42,15 +42,15 @@ userRoutes.route('/').get(function (req, res) {
 });
 
 // Defined edit route
-/** 
- * @swagger 
- * /api/user/edit/:id: 
- *   get: 
- *     description: edit user based on id 
- *     responses:  
- *       200: 
- *         description: Success  
- *   
+/**
+ * @swagger
+ * /api/user/edit/:id:
+ *   get:
+ *     description: edit user based on id
+ *     responses:
+ *       200:
+ *         description: Success
+ *
  */
 userRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
@@ -75,7 +75,7 @@ userRoutes.route('/update/:id').post(function (req, res, next) {
       user
         .save()
         .then((user) => {
-          res.json('Update complete');
+          res.json({ message: 'Update complete' });
         })
         .catch((err) => {
           res.status(400).send('unable to update the database');
@@ -88,32 +88,32 @@ userRoutes.route('/update/:id').post(function (req, res, next) {
 userRoutes.route('/delete/:id').get(function (req, res) {
   User.findByIdAndRemove({ _id: req.params.id }, function (err, user) {
     if (err) res.json(err);
-    else res.json('Successfully removed');
+    else res.json({ message: 'Successfully removed' });
   });
 });
 
 // authentication
-/** 
- * @swagger 
- * /api/user/auth: 
- *   post: 
+/**
+ * @swagger
+ * /api/user/auth:
+ *   post:
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *     responses:  
- *       200: 
- *         description: Success  
- *   
+ *     responses:
+ *       200:
+ *         description: Success
+ *
  */
 userRoutes.route('/auth').post(function (req, res) {
   let user = new User(req.body);
   User.findOne({ user_name: user.user_name, password: user.password }).then(
     function (doc) {
       if (!doc) {
-        res.json('no record found');
+        res.json({ message: 'no record found', is_success: false });
       } else {
-        res.json('authenticated');
+        res.json({ message: 'authenticated', is_success: true });
       }
     }
   );
