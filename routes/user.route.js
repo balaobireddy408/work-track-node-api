@@ -13,7 +13,7 @@ userRoutes.route('/add').post(function (req, res) {
   user
     .save()
     .then((user) => {
-      res.status(200).json({ message: 'added successfully' });
+      res.status(200).json({ message: 'User added successfully' });
     })
     .catch((err) => {
       res.status(400).send(err);
@@ -86,6 +86,7 @@ userRoutes.route('/update/:id').post(function (req, res, next) {
 
 // Defined delete | remove | destroy route
 userRoutes.route('/delete/:id').get(function (req, res) {
+  console.log('req', req);
   User.findByIdAndRemove({ _id: req.params.id }, function (err, user) {
     if (err) res.json(err);
     else res.json({ message: 'Successfully removed' });
@@ -113,7 +114,12 @@ userRoutes.route('/auth').post(function (req, res) {
       if (!doc) {
         res.json({ message: 'no record found', is_success: false });
       } else {
-        res.json({ message: 'authenticated', is_success: true });
+        res.json({
+          message: 'login successfully',
+          is_success: true,
+          email: doc.email,
+          user_name: doc.user_name,
+        });
       }
     }
   );

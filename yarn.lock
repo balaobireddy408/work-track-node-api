@@ -57,6 +57,11 @@
     "mime-types" "~2.1.24"
     "negotiator" "0.6.2"
 
+"acorn@^7.4.1":
+  "integrity" "sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A=="
+  "resolved" "https://registry.npmjs.org/acorn/-/acorn-7.4.1.tgz"
+  "version" "7.4.1"
+
 "ansi-align@^2.0.0":
   "integrity" "sha1-w2rsy6VjuJzrVW82kPCx2eNUf38="
   "resolved" "https://registry.npmjs.org/ansi-align/-/ansi-align-2.0.0.tgz"
@@ -463,6 +468,11 @@
   "resolved" "https://registry.npmjs.org/deep-extend/-/deep-extend-0.6.0.tgz"
   "version" "0.6.0"
 
+"deepmerge@^4.2.2":
+  "integrity" "sha512-z2wJZXrmeHdvYJp/Ux55wIjqo81G5Bp4c+oELTW+7ar6SogWHajt5a9gO3s3IDaGSAXjDk0vlQKN3rms8ab3og=="
+  "resolved" "https://registry.npmjs.org/deepmerge/-/deepmerge-4.3.0.tgz"
+  "version" "4.3.0"
+
 "define-property@^0.2.5":
   "integrity" "sha1-w1se+RjsPJkPmlvFe+BKrOxcgRY="
   "resolved" "https://registry.npmjs.org/define-property/-/define-property-0.2.5.tgz"
@@ -702,6 +712,18 @@
   dependencies:
     "is-glob" "^3.1.0"
     "path-dirname" "^1.0.0"
+
+"glob@^7.1.7":
+  "integrity" "sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q=="
+  "resolved" "https://registry.npmjs.org/glob/-/glob-7.2.3.tgz"
+  "version" "7.2.3"
+  dependencies:
+    "fs.realpath" "^1.0.0"
+    "inflight" "^1.0.4"
+    "inherits" "2"
+    "minimatch" "^3.1.1"
+    "once" "^1.3.0"
+    "path-is-absolute" "^1.0.0"
 
 "glob@7.1.6":
   "integrity" "sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA=="
@@ -1034,6 +1056,11 @@
   dependencies:
     "argparse" "^2.0.1"
 
+"json5@^2.2.3":
+  "integrity" "sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg=="
+  "resolved" "https://registry.npmjs.org/json5/-/json5-2.2.3.tgz"
+  "version" "2.2.3"
+
 "kareem@2.3.0":
   "integrity" "sha512-6hHxsp9e6zQU8nXsP+02HGWXwTkOEw6IROhF2ZA28cYbUk4eJ6QbtZvdqZOdD9YPKghG3apk5eOCvs+tLl3lRg=="
   "resolved" "https://registry.npmjs.org/kareem/-/kareem-2.3.0.tgz"
@@ -1192,10 +1219,10 @@
   "resolved" "https://registry.npmjs.org/mime/-/mime-1.6.0.tgz"
   "version" "1.6.0"
 
-"minimatch@^3.0.4":
-  "integrity" "sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA=="
-  "resolved" "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz"
-  "version" "3.0.4"
+"minimatch@^3.0.4", "minimatch@^3.1.1":
+  "integrity" "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw=="
+  "resolved" "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz"
+  "version" "3.1.2"
   dependencies:
     "brace-expansion" "^1.1.7"
 
@@ -1841,6 +1868,16 @@
   "version" "5.5.0"
   dependencies:
     "has-flag" "^3.0.0"
+
+"swagger-autogen@^2.23.1":
+  "integrity" "sha512-tOAb5cOGNPduIHKoOxndCRy2Mrg7xV3O1RerrWExrDxeSTjXhA350pyJd7VUDY6ZO9gbZ34Bjlc5CXkleUgvAQ=="
+  "resolved" "https://registry.npmjs.org/swagger-autogen/-/swagger-autogen-2.23.1.tgz"
+  "version" "2.23.1"
+  dependencies:
+    "acorn" "^7.4.1"
+    "deepmerge" "^4.2.2"
+    "glob" "^7.1.7"
+    "json5" "^2.2.3"
 
 "swagger-jsdoc@^6.2.8":
   "integrity" "sha512-VPvil1+JRpmJ55CgAtn8DIcpBs0bL5L3q5bVQvF4tAW/k/9JYSj7dCpaYCAv5rufe0vcCbBRQXGvzpkWjvLklQ=="

@@ -10,6 +10,7 @@ const express = require('express'),
 
   const userRoutes = require('./routes/user.route');
   const taskRoutes = require('./routes/task.route');
+  const swaggerFile = require('./swagger_output.json');
 
   mongoose.Promise = global.Promise;
   mongoose
@@ -29,6 +30,7 @@ const express = require('express'),
 
   const app = express();
   app.use(bodyParser.json());
+  app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
   app.use(cors());
   app.use('/api/User', userRoutes);
   app.use('/api/Task', taskRoutes);
@@ -39,42 +41,20 @@ const express = require('express'),
     res.json({ message: 'Welcome to what next application.' });
   });
 
-  const options = {
-    definition: {
-      openapi: '3.1.0',
-      swagger: '2.0',
-      version: '1.0.0',
-      info: {
-        title: 'LogRocket Express API with Swagger',
-        version: '0.1.0',
-        description:
-          'This is a simple CRUD API application made with Express and documented with Swagger',
-        license: {
-          name: 'MIT',
-          url: 'https://spdx.org/licenses/MIT.html',
-        },
-        contact: {
-          name: 'LogRocket',
-          url: 'https://logrocket.com',
-          email: 'info@email.com',
-        },
-      },
-      servers: [
-        {
-          url: 'http://localhost:8080',
-        },
-      ],
-    },
-    apis: ['./routes/*.js'],
-  };
+  //const specs = swaggerJsdoc(options);
+  const server = app.listen(port, function () {
+    console.log('Listening on port ' + port);
+  });
 
-  const specs = swaggerJsdoc(options);
-  app.use(
-    '/api-docs',
-    swaggerUi.serve,
-    swaggerUi.setup(specs, { explorer: true })
-  );
+  app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+  });
 
-const server = app.listen(port, function () {
-  console.log('Listening on port ' + port);
-});
+  // app.use('/api/User', userRoutes);
+  // app.use('/api/Task', taskRoutes);
+  require('./endpoints.js')(app);

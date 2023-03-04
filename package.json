@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "nodemon build",
-    "start": "node server"
+    "start": "node server",
+    "swagger-autogen": "node swagger.js"
   },
   "author": "bala",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.6.0",
     "swagger-jsdoc": "^6.2.8",
+    "swagger-autogen": "^2.23.1",
     "swagger-ui-express": "^4.6.1"
   }
 }
