@@ -5,8 +5,8 @@ const express = require('express'),
   mongoose = require('mongoose'),
   config = require('./dbConfig');
 
-  (swaggerJsdoc = require('swagger-jsdoc')),
-    (swaggerUi = require('swagger-ui-express'));
+  const swaggerJsdoc = require('swagger-jsdoc');
+  const swaggerUi = require('swagger-ui-express');
 
   const userRoutes = require('./routes/user.route');
   const taskRoutes = require('./routes/task.route');
@@ -54,7 +54,14 @@ const express = require('express'),
     );
     next();
   });
+  // var swaggerJson = require('./swagger_output.json')
+  // const specs = swaggerJsdoc(swaggerJson);
+  // app.use(
+  //   '/api-docs',
+  //   swaggerUi.serve,
+  //   swaggerUi.setup(swaggerJson)
+  // );
 
   // app.use('/api/User', userRoutes);
   // app.use('/api/Task', taskRoutes);
-  require('./endpoints.js')(app);
+//  require('./endpoints.js')(app);
