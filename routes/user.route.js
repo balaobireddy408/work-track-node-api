@@ -10,14 +10,26 @@ let User = require('../models/Users');
 
 userRoutes.route('/add').post(function (req, res) {
   let user = new User(req.body);
-  user
-    .save()
-    .then((user) => {
-      res.status(200).json({ message: 'User added successfully' });
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
+
+  User.findOne({ email: user.email }).then(function (doc) {
+    if (!doc) {
+      user
+        .save()
+        .then((user) => {
+          res
+            .status(200)
+            .json({ message: 'registered successfully', is_success: true });
+        })
+        .catch((err) => {
+          res.status(400).send(err);
+        });
+    } else {
+      res.json({
+        message: 'email id already exists',
+        is_success: false,
+      });
+    }
+  });
 });
 
 // Defined get data(index or listing) route
